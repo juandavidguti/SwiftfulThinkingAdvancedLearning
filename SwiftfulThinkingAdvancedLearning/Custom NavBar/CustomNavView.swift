@@ -7,12 +7,40 @@
 
 import SwiftUI
 
-struct CustomNavView: View {
+struct CustomNavView<T: View>: View {
+    
+    let content: T
+    
+    init(@ViewBuilder _ content: () -> T) {
+        self.content = content()
+    }
+    
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationStack {
+            CustomNavBarContainerView {
+                content
+            }
+            .toolbarVisibility(.hidden, for: .navigationBar)
+            .navigationBarBackButtonHidden(true)
+        }
     }
 }
 
 #Preview {
-    CustomNavView()
+    CustomNavView {
+        ZStack {
+            Color.red
+            Text("Hi")
+        }
+    }
+}
+
+
+// Drag back gesture in Navigation to the left
+extension UINavigationController {
+    open override func viewDidLoad() {
+        super.viewDidLoad()
+        interactivePopGestureRecognizer?.delegate = nil
+    }
 }

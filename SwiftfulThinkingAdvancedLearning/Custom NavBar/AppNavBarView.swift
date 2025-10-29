@@ -9,22 +9,43 @@ import SwiftUI
 
 struct AppNavBarView: View {
     var body: some View {
-        NavigationStack {
+        CustomNavView {
             ZStack {
-                Color.red.ignoresSafeArea()
-                NavigationLink {
-                    Text("Destination")
-                } label: {
-                    Text("Navigate")
-                        .foregroundStyle(Color.blue)
+                Color.orange.ignoresSafeArea()
+                CustomNavLink(destination:
+                                Text("I did it!")
+                    .customNavigationTitle("Second Screen")
+                    .customNavigationSubtitle("Subtitle should be showing")
+                    .customNavigationBackButtonHidden(false)
+                ) {
+                    Text("Yes!!")
                 }
-
             }
-            .navigationTitle("Navigation Title")
+            .customNavBarItems(title: "New Title", subtitle: "Hello", backButtonHideen: true)
         }
     }
 }
 
 #Preview {
     AppNavBarView()
+}
+
+extension AppNavBarView {
+    private var defaultNavBarView: some View{
+        NavigationStack {
+            ZStack {
+                Color.green.ignoresSafeArea()
+                
+                NavigationLink {
+                    Text("Destination")
+                        .navigationTitle("Title2")
+                        .navigationBarBackButtonHidden(true)
+                } label: {
+                    Text("Navigate")
+                        .foregroundStyle(Color.blue)
+                }
+            }
+            .navigationTitle("Navigation Title")
+        }
+    }
 }

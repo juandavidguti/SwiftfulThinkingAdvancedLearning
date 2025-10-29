@@ -7,12 +7,35 @@
 
 import SwiftUI
 
-struct CustomNavLink: View {
+struct CustomNavLink<Label:View, Destination:View> : View {
+    
+    let label: Label
+    let destination: Destination
+    
+    init(destination: Destination, @ViewBuilder label: () -> Label) {
+        self.label = label()
+        self.destination = destination
+    }
+    
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationLink {
+            CustomNavBarContainerView {
+                destination
+            }
+            .toolbarVisibility(.hidden, for: .navigationBar)
+        } label: {
+            label
+        }
+
     }
 }
-
 #Preview {
-    CustomNavLink()
+    CustomNavView {
+        CustomNavLink(destination: Text("Text")) {
+            Text("Hello")
+        }
+    }
+    
+
 }
