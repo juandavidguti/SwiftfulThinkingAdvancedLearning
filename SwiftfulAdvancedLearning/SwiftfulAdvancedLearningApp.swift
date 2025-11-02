@@ -9,6 +9,7 @@ import SwiftUI
 
 @main
 struct SwiftfulAdvancedLearningApp: App {
+    
     var body: some Scene {
         WindowGroup {
             ViewModifierBootcamp()

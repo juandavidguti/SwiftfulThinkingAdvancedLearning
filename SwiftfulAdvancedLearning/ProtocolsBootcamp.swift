@@ -40,7 +40,7 @@ protocol ButtonPressedProtocol {
 }
 
 protocol ButtonDataSourceProtocol: ButtonTextProtocol, ButtonPressedProtocol {
-    
+    // we can create protocols that conform to other protocols
 }
 
 class DefaultDataSource: ButtonDataSourceProtocol {
