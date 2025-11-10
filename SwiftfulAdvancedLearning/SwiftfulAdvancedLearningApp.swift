@@ -28,7 +28,8 @@ struct SwiftfulAdvancedLearningApp: App {
     
     var body: some Scene {
         WindowGroup {
-            UITestingBootcampView(currentUserIsSIgnedIn: currentUserIsSIgnedIn)
+            PropertyWrapperBootcamp()
+//            UITestingBootcampView(currentUserIsSIgnedIn: currentUserIsSIgnedIn)
         }
     }
 }

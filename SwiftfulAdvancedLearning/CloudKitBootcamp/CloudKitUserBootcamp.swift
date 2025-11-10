@@ -28,8 +28,6 @@ import Combine
         getCurrentUserName()
     }
     
-    
-    
     private func getiCloudStatus() {
         
         CloudKitUtility.getiCloudStatus()
