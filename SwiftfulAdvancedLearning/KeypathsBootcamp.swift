@@ -49,8 +49,8 @@ struct KeypathsBootcamp: View {
     @State private var dataArray: [MyDataModel] = []
     
     // Keypaths defined by Apple
-//    @Environment(\.dismiss) var dismiss
-//    @Environment(\.isPresented) var isPresented
+    @Environment(\.dismiss) var dismiss
+    @Environment(\.isPresented) var isPresented
 //    
     // Keypaths that we can define
     @AppStorage("user_count") var userCount: Int = 0
